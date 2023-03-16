@@ -60,4 +60,13 @@ cl -DTEST build.c && build
 
 
 
+## included tool
+
+amalgamator - command line tool to merge several c files
+and create the amalgamted version. (like sqlite)
+
+embed - emulation of C23 embed feature. We convert files
+into numbers and then we can use nornmal include.
+
+maketest - the tool that colects tests and generate the call
 
