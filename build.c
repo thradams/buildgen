@@ -17,11 +17,13 @@ void compile_embed();
 void generate_tests();
 void compile_project();
 void clearall();
-
+void process_markdown();
 int main()
 {
     /*first we compile the tools we need*/
     compile_tools();
+
+    process_markdown("readme.md", "readme.html");
 
     /*we convert files to be used like #embed*/
     compile_embed();
@@ -31,6 +33,7 @@ int main()
 
     /*compile project*/
     compile_project();
+
 
 #ifdef TEST
     /*
@@ -45,7 +48,7 @@ int main()
         printf(RESET);
     }
 #endif
-    clearall();
+    //clearall();
 }
 
 
@@ -58,7 +61,58 @@ void compile_tools()
     if (system(CC " -D_CRT_SECURE_NO_WARNINGS maketest.c " OUT_OPT "../maketest.exe") != 0) exit(1);
     if (system(CC " -D_CRT_SECURE_NO_WARNINGS amalgamator.c "  OUT_OPT "../amalgamator.exe") != 0) exit(1);
     if (system(CC " -D_CRT_SECURE_NO_WARNINGS embed.c " OUT_OPT "../embed.exe") != 0) exit(1);
+
+
+    chdir("./hoedown");
+
+#define HOEDOWN_SRC \
+    " autolink.c " \
+    " buffer.c " \
+    " document.c " \
+    " escape.c " \
+    " hoedown.c " \
+    " html.c " \
+    " html_blocks.c " \
+    " html_smartypants.c " \
+    " stack.c " \
+    " version.c "
+
+    if (system(CC HOEDOWN_SRC  OUT_OPT "../../hoedown.exe") != 0) exit(1);
     chdir("..");
+    chdir("..");
+
+}
+
+void process_markdown(const char* mdfilename, const char* outfile)
+{
+    const char* header =
+        "<!DOCTYPE html>\n"
+        "<html>\n"
+        "<head>\n"
+        "  \n"
+        "</head>\n"
+        "<body>\n";
+
+
+    FILE* f2 = fopen(outfile /*"./web/index.html"*/, "w");
+    if (f2)
+    {
+        fwrite(header, 1, strlen(header), f2);
+        fclose(f2);
+    }
+    char cmd[200];
+    snprintf(cmd, sizeof cmd, RUN "hoedown.exe --html-toc --toc-level 2 --autolink --fenced-code %s >> %s", mdfilename, outfile);
+    if (system(cmd) != 0) exit(1);
+
+    snprintf(cmd, sizeof cmd, RUN "hoedown.exe  --toc-level 2 --autolink --fenced-code %s >> %s", mdfilename, outfile);
+    if (system(cmd) != 0) exit(1);
+
+    FILE* f3 = fopen(outfile /*"./web/index.html"*/, "a");
+    if (f3)
+    {
+        fwrite("</body></html>", 1, strlen("</body></html>"), f3);
+        fclose(f3);
+    }
 }
 
 void compile_project()
@@ -178,12 +232,12 @@ void generate_tests()
 
 void clearall()
 {
+
+#ifdef BUILD_WINDOWS_MSC
     remove("maketest.exe");
     remove("embed.exe");
     remove("amalgamator.exe");
-    
 
-#ifdef BUILD_WINDOWS_MSC
     system("del *.pdb");
     system("del *.obj");
     system("del *.include");
