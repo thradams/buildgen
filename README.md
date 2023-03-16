@@ -60,7 +60,7 @@ cl -DTEST build.c && build
 
 
 
-## included tool
+## Tools Included
 
 amalgamator - command line tool to merge several c files
 and create the amalgamted version. (like sqlite)
