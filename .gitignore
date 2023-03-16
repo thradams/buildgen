@@ -6,3 +6,6 @@
 /buildgen.exe
 /build.exe
 *.obj
+*.include
+*.pdb
+*.exe
