@@ -59,7 +59,12 @@ cl -DTEST build.c && build
 ```
 
 
+## Pré configured compilers 
 
+ * Microsoft MSCV (any version)
+ * Gcc
+ * CLang
+  
 ## Tools Included
 
 amalgamator - command line tool to merge several c files
