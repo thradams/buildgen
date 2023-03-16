@@ -5,3 +5,4 @@
 /.vs
 /buildgen.exe
 /build.exe
+*.obj
