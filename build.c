@@ -78,6 +78,8 @@ void compile_tools()
     " version.c "
 
     if (system(CC HOEDOWN_SRC  OUT_OPT "../../hoedown.exe") != 0) exit(1);
+    
+
     chdir("..");
     chdir("..");
 
@@ -250,8 +252,9 @@ void clearall()
 
 void compile_embed()
 {
-
-    /*gerar includes de embed*/
+    /*
+    This files will be converted to the "embed" version
+    */
 #define EMBED_SRC \
     " build.template.h " \
     " build.template.c " \
@@ -261,7 +264,9 @@ void compile_embed()
     " embed.template.c " \
     " file1.template.c " \
     " file1.template.h " \
-    " unit_test.template.h "
+    " unit_test.template.h " \
+    " hoedown.template.c " \
+    " readme.template.md " 
 
     system(RUN "embed.exe " EMBED_SRC);
 }

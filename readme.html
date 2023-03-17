@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+</head>
+<body>
+<ul>
+<li>
+<a href="#toc_0">BuildGen</a>
+<ul>
+<li>
+<a href="#toc_1">MSVC build instructions</a>
+</li>
+<li>
+<a href="#toc_2">GCC (linux) build instructions</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_3">Usage</a>
+<ul>
+<li>
+<a href="#toc_4">Pré configured compilers</a>
+</li>
+<li>
+<a href="#toc_5">Tools Included</a>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="toc_0">BuildGen</h1>
+
+<p>What is BuildGen?</p>
+
+<p>BuildGen is a command line tool that creates a directory structure build script for C programs. </p>
+
+<h2 id="toc_1">MSVC build instructions</h2>
+
+<p>Open the Developer Command Prompt of visual studio and type</p>
+
+<pre><code>cl build.c &amp;&amp; build
+</code></pre>
+
+<p>This will build <em>buildgen.exe</em></p>
+
+<h2 id="toc_2">GCC (linux) build instructions</h2>
+
+<p>Go to directory and type:</p>
+
+<pre><code>gcc build.c -o build &amp;&amp; ./build
+</code></pre>
+
+<h1 id="toc_3">Usage</h1>
+
+<pre><code> buildgen name
+</code></pre>
+
+<p>This commnad will generate:</p>
+
+<pre><code>name
+    build.c
+    build.h
+    file1.c
+    file1.h
+    main.c
+    tools
+      amalgamator.c
+      embed.c
+      maketest.c
+      hoedown.c
+    unit_test.h
+</code></pre>
+
+<p>To check is build is working go to the name folder and type.</p>
+
+<pre><code>cl build.c &amp;&amp; build
+</code></pre>
+
+<p>To run tests</p>
+
+<pre><code>cl -DTEST build.c &amp;&amp; build
+</code></pre>
+
+<h2 id="toc_4">Pré configured compilers</h2>
+
+<ul>
+<li>Microsoft MSCV (any version)</li>
+<li>Gcc</li>
+<li>CLang</li>
+</ul>
+
+<h2 id="toc_5">Tools Included</h2>
+
+<p>amalgamator - command line tool to merge several c files
+and create the amalgamted version. (like sqlite)</p>
+
+<p>embed - emulation of C23 embed feature. We convert files
+into numbers and then we can use nornmal include.</p>
+
+<p>maketest - the tool that colects tests and generate the call</p>
+
+<p>hoedown - Markdown to html generator <a href="https://github.com/hoedown/hoedown">https://github.com/hoedown/hoedown</a></p>
+</body></html>

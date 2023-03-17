@@ -1,10 +1,8 @@
-# buildgen
+# BuildGen
 
-Command line tool to generate a C project that
-compiles on windows linux etc..
+What is BuildGen?
 
-See 
-https://github.com/thradams/build
+BuildGen is a command line tool that creates a directory structure build script for C programs. 
 
 
 ## MSVC build instructions
@@ -18,7 +16,7 @@ This will build *buildgen.exe*
 
 
 ## GCC (linux) build instructions
-Got directory and type:
+Go to directory and type:
 
 ```
 gcc build.c -o build && ./build
@@ -34,19 +32,21 @@ gcc build.c -o build && ./build
 This commnad will generate:
 
 ```
-build.c
-build.h
-file1.c
-file1.h
-main.c
-tools
-  amalgamator.c
-  embed.c
-  maketest.c
-unit_test.h
+name
+	build.c
+	build.h
+	file1.c
+	file1.h
+	main.c
+	tools
+	  amalgamator.c
+	  embed.c
+	  maketest.c
+	  hoedown.c
+	unit_test.h
 ```
 
-To compile the generated project (same of instructions to build buildgen)
+To check is build is working go to the name folder and type.
 
 ```
 cl build.c && build
@@ -57,6 +57,7 @@ To run tests
 ```
 cl -DTEST build.c && build
 ```
+
 
 
 ## Pré configured compilers 
@@ -75,3 +76,4 @@ into numbers and then we can use nornmal include.
 
 maketest - the tool that colects tests and generate the call
 
+hoedown - Markdown to html generator https://github.com/hoedown/hoedown

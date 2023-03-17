@@ -82,10 +82,10 @@ int main(int argc, char** argv)
     write_file(amalgamator_c_text, sizeof amalgamator_c_text, "./tools/amalgamator.c");
 
 
-    char unit_test_h_text[] = {
-    #include "unit_test.template.h.include"
+    char hoedown_c_text[] = {
+    #include "hoedown.template.c.include"
     ,0 };
-    write_file(unit_test_h_text, sizeof unit_test_h_text, "unit_test.h");
+    write_file(hoedown_c_text, sizeof hoedown_c_text, "./tools/hoedown.c");
 
     char file1_c_text[] = {
         #include "file1.template.c.include"
@@ -96,6 +96,11 @@ int main(int argc, char** argv)
         #include "file1.template.h.include"
         ,0 };
     write_file(file1_h_text, sizeof file1_h_text, "file1.h");
+
+    char readme_md_text[] = {
+        #include "readme.template.md.include"
+        ,0 };
+    write_file(readme_md_text, sizeof readme_md_text, "readme.md");
 
 
     printf("Tips:\n");
