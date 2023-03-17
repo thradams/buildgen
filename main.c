@@ -16,7 +16,7 @@
 
 void write_file(const char* text, int textsize, const char* filename)
 {
-    FILE* f = fopen(filename, "w");
+    FILE* f = fopen(filename, "wb");
     if (f)
     {
         fwrite(text, textsize - 1, 1, f);
