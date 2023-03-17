@@ -37,17 +37,17 @@ This commnad will generate:
 name
 	build.c     // build "script"
 	build.h     // build script utils
-	file1.c     // sample file source with test
+	file1.c     // sample file source with a unit test on it
 	file1.h     // sample file header
 	main.c      // sample main
 	readme.md   // sample readme
 	unit_test.h // sample unit test assert facility
 
 	tools
-	  amalgamator.c   // creates amalgamation file
-	  embed.c         // emulate C23 embed
-	  maketest.c      // used to generate unit test
-	  hoedown.c	      // used to convert .md to .html
+	  amalgamator.c   // tool to create amalgamation file
+	  embed.c         // tool to emulate C23 #embed
+	  maketest.c      // tool to generate unit test automatic call
+	  hoedown.c	  // tool to convert .md to .html
 ```
 
 To check is the generated build is working go to the name folder and type.
@@ -56,7 +56,7 @@ To check is the generated build is working go to the name folder and type.
 cl build.c && build
 ```
 
-To run tests
+To run unit tests
 
 ```
 cl -DTEST build.c && build
