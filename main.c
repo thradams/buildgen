@@ -102,6 +102,11 @@ int main(int argc, char** argv)
         ,0 };
     write_file(readme_md_text, sizeof readme_md_text, "readme.md");
 
+    char unit_test_h_text[] = {
+        #include "unit_test.template.h.include"
+        ,0 };
+    write_file(unit_test_h_text, sizeof unit_test_h_text, "unit_test.h");
+
 
     printf("Tips:\n");
     printf("Compiling on windows:\n");

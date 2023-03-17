@@ -32,7 +32,8 @@
 
 <p>What is BuildGen?</p>
 
-<p>BuildGen is a command line tool that creates a directory structure build script for C programs. </p>
+<p>BuildGen is a command line tool that creates a directory structure with a 
+multiplatform build script for C programs. </p>
 
 <h2 id="toc_1">MSVC build instructions</h2>
 
@@ -63,15 +64,17 @@
     file1.c
     file1.h
     main.c
+    readme.md
+    unit_test.h
+
     tools
       amalgamator.c
       embed.c
       maketest.c
-      hoedown.c
-    unit_test.h
+      hoedown.c 
 </code></pre>
 
-<p>To check is build is working go to the name folder and type.</p>
+<p>To check is the generated build is working go to the name folder and type.</p>
 
 <pre><code>cl build.c &amp;&amp; build
 </code></pre>
