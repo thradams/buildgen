@@ -35,6 +35,8 @@
 <p>BuildGen is a command line tool that creates a directory structure with a 
 multiplatform build script for C programs. </p>
 
+<p>See the idea behing it here <a href="https://github.com/thradams/build">https://github.com/thradams/build</a></p>
+
 <h2 id="toc_1">MSVC build instructions</h2>
 
 <p>Open the Developer Command Prompt of visual studio and type</p>
@@ -84,6 +86,8 @@ multiplatform build script for C programs. </p>
 <pre><code>cl -DTEST build.c &amp;&amp; build
 </code></pre>
 
+<p>The sample generates hello.exe.</p>
+
 <h2 id="toc_4">Pré configured compilers</h2>
 
 <ul>
@@ -95,12 +99,11 @@ multiplatform build script for C programs. </p>
 <h2 id="toc_5">Tools Included</h2>
 
 <p>amalgamator - command line tool to merge several c files
-and create the amalgamted version. (like sqlite)</p>
+              and create the amalgamted version. (like sqlite)</p>
 
-<p>embed - emulation of C23 embed feature. We convert files
-into numbers and then we can use nornmal include.</p>
+<p>embed - emulation of C23 embed feature.</p>
 
-<p>maketest - the tool that colects tests and generate the call</p>
+<p>maketest - the tool used to allow -DTEST option to work</p>
 
 <p>hoedown - Markdown to html generator <a href="https://github.com/hoedown/hoedown">https://github.com/hoedown/hoedown</a></p>
 </body></html>

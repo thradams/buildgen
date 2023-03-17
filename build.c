@@ -167,7 +167,7 @@ void compile_project()
 #ifdef BUILD_WINDOWS_CLANG
 
     system("clang "
-        SOURCE_FILES " main.c "
+        SOURCE_FILES 
 #if defined DEBUG
         " -D_DEBUG"
 #else
@@ -191,7 +191,7 @@ void compile_project()
 
 #ifdef BUILD_LINUX_CLANG
     system("clang "
-        SOURCE_FILES " main.c "
+        SOURCE_FILES 
 #ifdef TEST
         "-DTEST"
 #endif
@@ -209,7 +209,7 @@ void compile_project()
         " -Wno-multichar "
         " -Wno-switch "
         " -g "
-        SOURCE_FILES " main.c "
+        SOURCE_FILES 
 
 #if defined DEBUG
         " -D_DEBUG"

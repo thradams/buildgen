@@ -39,7 +39,8 @@ int main(int argc, char** argv)
 
     if (argc < 2)
     {
-        printf("usage:\nbuildtool projectname");
+        printf("Usage:\n");
+        printf("  buildgen projectname\n");
         return;
     }
 

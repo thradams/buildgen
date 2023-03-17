@@ -5,6 +5,7 @@ What is BuildGen?
 BuildGen is a command line tool that creates a directory structure with a 
 multiplatform build script for C programs. 
 
+See the idea behing it here https://github.com/thradams/build
 
 ## MSVC build instructions
 Open the Developer Command Prompt of visual studio and type
@@ -61,6 +62,7 @@ To run tests
 cl -DTEST build.c && build
 ```
 
+The sample generates hello.exe.
 
 
 ## Pré configured compilers 
@@ -72,11 +74,10 @@ cl -DTEST build.c && build
 ## Tools Included
 
 amalgamator - command line tool to merge several c files
-and create the amalgamted version. (like sqlite)
+              and create the amalgamted version. (like sqlite)
 
-embed - emulation of C23 embed feature. We convert files
-into numbers and then we can use nornmal include.
+embed - emulation of C23 embed feature.
 
-maketest - the tool that colects tests and generate the call
+maketest - the tool used to allow -DTEST option to work
 
 hoedown - Markdown to html generator https://github.com/hoedown/hoedown
