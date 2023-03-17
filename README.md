@@ -7,7 +7,7 @@ multiplatform build script for C programs.
 
 See the idea behing it here https://github.com/thradams/build
 
-## MSVC build instructions
+## Building buildgen on MSVC windows
 Open the Developer Command Prompt of visual studio and type
 
 ```
@@ -17,7 +17,7 @@ cl build.c && build
 This will build *buildgen.exe*
 
 
-## GCC (linux) build instructions
+## Building buildgen on linux GCC 
 Go to directory and type:
 
 ```
@@ -25,7 +25,7 @@ gcc build.c -o build && ./build
 ```
 
 
-# Usage
+# Using buildgen
 
 ```
  buildgen name
@@ -33,21 +33,21 @@ gcc build.c -o build && ./build
 
 This commnad will generate:
 
-```
+```c
 name
-	build.c
-	build.h
-	file1.c
-	file1.h
-	main.c
-	readme.md
-	unit_test.h
+	build.c     // build "script"
+	build.h     // build script utils
+	file1.c     // sample file source with test
+	file1.h     // sample file header
+	main.c      // sample main
+	readme.md   // sample readme
+	unit_test.h // sample unit test assert facility
 
 	tools
-	  amalgamator.c
-	  embed.c
-	  maketest.c
-	  hoedown.c	
+	  amalgamator.c   // creates amalgamation file
+	  embed.c         // emulate C23 embed
+	  maketest.c      // used to generate unit test
+	  hoedown.c	      // used to convert .md to .html
 ```
 
 To check is the generated build is working go to the name folder and type.

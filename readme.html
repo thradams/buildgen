@@ -9,15 +9,15 @@
 <a href="#toc_0">BuildGen</a>
 <ul>
 <li>
-<a href="#toc_1">MSVC build instructions</a>
+<a href="#toc_1">Building buildgen on MSVC windows</a>
 </li>
 <li>
-<a href="#toc_2">GCC (linux) build instructions</a>
+<a href="#toc_2">Building buildgen on linux GCC</a>
 </li>
 </ul>
 </li>
 <li>
-<a href="#toc_3">Usage</a>
+<a href="#toc_3">Using buildgen</a>
 <ul>
 <li>
 <a href="#toc_4">Pré configured compilers</a>
@@ -37,7 +37,7 @@ multiplatform build script for C programs. </p>
 
 <p>See the idea behing it here <a href="https://github.com/thradams/build">https://github.com/thradams/build</a></p>
 
-<h2 id="toc_1">MSVC build instructions</h2>
+<h2 id="toc_1">Building buildgen on MSVC windows</h2>
 
 <p>Open the Developer Command Prompt of visual studio and type</p>
 
@@ -46,34 +46,34 @@ multiplatform build script for C programs. </p>
 
 <p>This will build <em>buildgen.exe</em></p>
 
-<h2 id="toc_2">GCC (linux) build instructions</h2>
+<h2 id="toc_2">Building buildgen on linux GCC</h2>
 
 <p>Go to directory and type:</p>
 
 <pre><code>gcc build.c -o build &amp;&amp; ./build
 </code></pre>
 
-<h1 id="toc_3">Usage</h1>
+<h1 id="toc_3">Using buildgen</h1>
 
 <pre><code> buildgen name
 </code></pre>
 
 <p>This commnad will generate:</p>
 
-<pre><code>name
-    build.c
-    build.h
-    file1.c
-    file1.h
-    main.c
-    readme.md
-    unit_test.h
+<pre><code class="language-c">name
+    build.c     // build &quot;script&quot;
+    build.h     // build script utils
+    file1.c     // sample file source with test
+    file1.h     // sample file header
+    main.c      // sample main
+    readme.md   // sample readme
+    unit_test.h // sample unit test assert facility
 
     tools
-      amalgamator.c
-      embed.c
-      maketest.c
-      hoedown.c 
+      amalgamator.c   // creates amalgamation file
+      embed.c         // emulate C23 embed
+      maketest.c      // used to generate unit test
+      hoedown.c       // used to convert .md to .html
 </code></pre>
 
 <p>To check is the generated build is working go to the name folder and type.</p>
