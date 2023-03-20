@@ -24,6 +24,81 @@ void write_file(const char* text, int textsize, const char* filename)
     }
 }
 
+struct file {
+    char* content;
+    char* dest;
+};
+
+struct file files[] = {
+
+    {
+        .content = (char[]){
+        #include "build.template.c.include"
+        ,0}, .dest = "build.c"
+    },
+
+    {
+        .content = (char[]){
+        #include "build.template.h.include"
+        ,0}, .dest = "build.h"
+    },
+
+    {
+        .content = (char[]){
+        #include "main.template.c.include"
+        ,0}, .dest = "main.c"
+    },
+
+    {
+        .content = (char[]){
+        #include "file1.template.c.include"
+        ,0}, .dest = "file1.c"
+    },
+
+    {
+        .content = (char[]){
+        #include "file1.template.h.include"
+        ,0}, .dest = "file1.h"
+    },
+
+    {
+        .content = (char[]){
+        #include "readme.template.md.include"
+        ,0}, .dest = "readme.md"
+    },
+
+    {
+        .content = (char[]){
+        #include "unit_test.template.h.include"
+        ,0}, .dest = "unit_test.h"
+    },
+
+
+    {
+        .content = (char[]){
+        #include "maketest.template.c.include"
+        ,0}, .dest = "./tools/maketest.c"
+    },
+
+    {
+        .content = (char[]){
+        #include "embed.template.c.include"
+        ,0}, .dest = "./tools/embed.c"
+    },
+
+    {
+        .content = (char[]){
+        #include "amalgamator.template.c.include"
+        ,0}, .dest = "./tools/amalgamator.c"
+    },
+
+    {
+        .content = (char[]){
+        #include "hoedown.template.c.include"
+        ,0}, .dest = "./tools/hoedown.c"
+    },
+};
+
 int main(int argc, char** argv)
 {
 #define STR \
@@ -51,62 +126,11 @@ int main(int argc, char** argv)
     chdir(argv[1]);
     mkdir("tools", 0);
 
-    char build_c_text[] = {
-    #include "build.template.c.include"
-    ,0 };
-    write_file(build_c_text, sizeof build_c_text, "build.c");
 
-    char build_h_text[] = {
-        #include "build.template.h.include"
-        ,0 };
-    write_file(build_h_text, sizeof build_h_text, "build.h");
-
-    char main_c_text[] = {
-        #include "main.template.c.include"
-        ,0 };
-    write_file(main_c_text, sizeof main_c_text, "main.c");
-
-
-    char maketest_c_text[] = {
-        #include "maketest.template.c.include"
-        ,0 };
-    write_file(maketest_c_text, sizeof maketest_c_text, "./tools/maketest.c");
-
-    char embed_c_text[] = {
-        #include "embed.template.c.include"
-        ,0 };
-    write_file(embed_c_text, sizeof embed_c_text, "./tools/embed.c");
-
-    char amalgamator_c_text[] = {
-        #include "amalgamator.template.c.include"
-        ,0 };
-    write_file(amalgamator_c_text, sizeof amalgamator_c_text, "./tools/amalgamator.c");
-
-
-    char hoedown_c_text[] = {
-    #include "hoedown.template.c.include"
-    ,0 };
-    write_file(hoedown_c_text, sizeof hoedown_c_text, "./tools/hoedown.c");
-
-    char file1_c_text[] = {
-        #include "file1.template.c.include"
-        ,0 };
-    write_file(file1_c_text, sizeof file1_c_text, "file1.c");
-
-    char file1_h_text[] = {
-        #include "file1.template.h.include"
-        ,0 };
-    write_file(file1_h_text, sizeof file1_h_text, "file1.h");
-
-    char readme_md_text[] = {
-        #include "readme.template.md.include"
-        ,0 };
-    write_file(readme_md_text, sizeof readme_md_text, "readme.md");
-
-    char unit_test_h_text[] = {
-        #include "unit_test.template.h.include"
-        ,0 };
-    write_file(unit_test_h_text, sizeof unit_test_h_text, "unit_test.h");
+    for (int i = 0; i < sizeof(files) / sizeof(files[0]); i++)
+    {
+        write_file(files[i].content, strlen(files[i].content), files[i].dest);
+    }
 
 
     printf("Tips:\n");

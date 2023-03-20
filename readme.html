@@ -63,17 +63,17 @@ multiplatform build script for C programs. </p>
 <pre><code class="language-c">name
     build.c     // build &quot;script&quot;
     build.h     // build script utils
-    file1.c     // sample file source with test
+    file1.c     // sample file source with a unit test on it
     file1.h     // sample file header
     main.c      // sample main
     readme.md   // sample readme
     unit_test.h // sample unit test assert facility
 
     tools
-      amalgamator.c   // creates amalgamation file
-      embed.c         // emulate C23 embed
-      maketest.c      // used to generate unit test
-      hoedown.c       // used to convert .md to .html
+      amalgamator.c   // tool to create amalgamation file
+      embed.c         // tool to emulate C23 #embed
+      maketest.c      // tool to generate unit test automatic call
+      hoedown.c   // tool to convert .md to .html
 </code></pre>
 
 <p>To check is the generated build is working go to the name folder and type.</p>
@@ -81,7 +81,7 @@ multiplatform build script for C programs. </p>
 <pre><code>cl build.c &amp;&amp; build
 </code></pre>
 
-<p>To run tests</p>
+<p>To run unit tests</p>
 
 <pre><code>cl -DTEST build.c &amp;&amp; build
 </code></pre>
