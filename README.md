@@ -70,6 +70,26 @@ The sample generates hello.exe.
  * Microsoft MSCV (any version)
  * Gcc
  * CLang
+ 
+ ## Debugging the build (msvc)
+ 
+Add /Zi option
+
+ ```
+ cl /Zi build.c
+ ```
+ then
+ ```
+ devenv /DebugExe  build.exe
+ ```
+ F11
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   
 ## Tools Included
 
